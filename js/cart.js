@@ -10,7 +10,7 @@ window.addEventListener('click', function (event) {
 
 		// Собираем данные с этого товара и записываем их в единый объект productInfo
 		const productInfo = {
-			id: card.dataset.id,
+			id: card.dataset.id, // id
 			imgSrc: card.querySelector('.product-img').getAttribute('src'), // картинка
 			title: card.querySelector('.item-title').innerText, // заголовок
 			itemsInBox: card.querySelector('[data-items-in-box]').innerText, // штуки
@@ -18,38 +18,53 @@ window.addEventListener('click', function (event) {
 			counter: card.querySelector('[data-counter]').innerText, // счетчик
 		};
 
-        // Собранныне данные поставим в шаблон для мовара в корзине
-        const cartItemHMTL = `<div class="cart-item" data-id="02">
-                                <div class="cart-item__top">
-                                    <div class="cart-item__img">
-                                        <img src="${productInfo.imgSrc}" alt="">
-                                    </div>
-                                    <div class="cart-item__desc">
-                                        <div class="cart-item__title">${productInfo.title}</div>
-                                        <div class="cart-item__weight">${productInfo.itemsInBox}</div>
+        // ПРОВЕРКА есть ли уже такой товар в карзине
+        const itemInCart = cartWrapper.querySelector(`[data-id="${productInfo.id}"]`);
+        console.log(itemInCart);
 
-                                        <!-- cart-item__details -->
-                                        <div class="cart-item__details">
+        // Если товар есть в коризне
+        if (itemInCart) {
+            const counterElement = itemInCart.querySelector('[data-counter]');
+            counterElement.innerText = parseInt(counterElement.innerText) + parseInt(productInfo.counter);
+        } else {
+            // Если товара нет в корзине
 
-                                            <div class="items items--small counter-wrapper">
-                                                <div class="items__control" data-action="minus">-</div>
-                                                <div class="items__current" data-counter="">${productInfo.counter}</div>
-                                                <div class="items__control" data-action="plus">+</div>
+            // Собранныне данные поставим в шаблон для мовара в корзине
+            const cartItemHMTL = `<div class="cart-item" data-id="${productInfo.id}">
+                                    <div class="cart-item__top">
+                                        <div class="cart-item__img">
+                                            <img src="${productInfo.imgSrc}" alt="">
+                                        </div>
+                                        <div class="cart-item__desc">
+                                            <div class="cart-item__title">${productInfo.title}</div>
+                                            <div class="cart-item__weight">${productInfo.itemsInBox}</div>
+
+                                            <!-- cart-item__details -->
+                                            <div class="cart-item__details">
+
+                                                <div class="items items--small counter-wrapper">
+                                                    <div class="items__control" data-action="minus">-</div>
+                                                    <div class="items__current" data-counter="">${productInfo.counter}</div>
+                                                    <div class="items__control" data-action="plus">+</div>
+                                                </div>
+
+                                                <div class="price">
+                                                    <div class="price__currency">${productInfo.price}</div>
+                                                </div>
+
                                             </div>
-
-                                            <div class="price">
-                                                <div class="price__currency">${productInfo.price}</div>
-                                            </div>
+                                            <!-- // cart-item__details -->
 
                                         </div>
-                                        <!-- // cart-item__details -->
-
                                     </div>
-                                </div>
                             </div>`;
-        
-        // Отобразим товар в корзине
-        cartWrapper.insertAdjacentHTML('beforeend', cartItemHMTL);
-                        
+            
+            // Отобразим товар в корзине
+            cartWrapper.insertAdjacentHTML('beforebegin', cartItemHMTL); // beforebegin - в НАЧАЛО.   
+        }
+
+        // Сбрасываем счетчик на 1
+        card.querySelector('[data-counter]').innerText = '1';
 	}
 });
+
