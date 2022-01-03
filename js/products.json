@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "title": "Nike Air Max 1", 
+        "itemsInBox": 6,
+        "price": 11111,
+        "imgSrc": "running_shoes.png"
+    },
+
+    {
+        "id": "2",
+        "title": "Nike Air Max 2", 
+        "itemsInBox": 6,
+        "price": 13400,
+        "imgSrc": "running_shoes.png"
+    },
+
+    {
+        "id": "3",
+        "title": "Nike Air Max 3", 
+        "itemsInBox": 6,
+        "price": 12300,
+        "imgSrc": "running_shoes.png"
+    },
+
+    {
+        "id": "4",
+        "title": "Nike Air Max 4", 
+        "itemsInBox": 6,
+        "price": 12000,
+        "imgSrc": "running_shoes.png"
+    }
+]
