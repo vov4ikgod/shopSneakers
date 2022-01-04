@@ -21,7 +21,7 @@
 
 <body>
 
-	<header class="header">
+	<header id="header" class="header">
 		<div class="container text-center">
 			<img src="img/logo/logo.png" width="92" alt="logo">
 			<div class="display-4">Магазин кроссовок</div>
@@ -29,12 +29,14 @@
 		</div>
 	</header>
 
+
+
 	<div class="container mb-5">
 		<div class="row">
 
 			<!-- Товары -->
 			<div class="col-md-8">
-				<div class="row">
+				<div class="row" id="products-container">
 
 					<!-- Ролл -->
 					<div class="col-md-6 card-shoes-1">
@@ -167,51 +169,26 @@
 						<!-- cart-wrapper -->
 						<div class="cart-wrapper">
 
-							<!-- Cart item -->
-							<div class="cart-item" data-id="02">
-								<div class="cart-item__top">
-									<div class="cart-item__img">
-										<img src="img/sneak/running_shoes.png" alt="">
-									</div>
-									<div class="cart-item__desc">
-										<div class="cart-item__title">Nike Air Max 2</div>
-										<div class="cart-item__weight">1 шт.</div>
-
-										<!-- cart-item__details -->
-										<div class="cart-item__details">
-
-											<div class="items items--small counter-wrapper">
-												<div class="items__control" data-action="minus">-</div>
-												<div class="items__current" data-counter="">1</div>
-												<div class="items__control" data-action="plus">+</div>
-											</div>
-
-											<div class="price">
-												<div class="price__currency">13400 ₽</div>
-											</div>
-
-										</div>
-										<!-- // cart-item__details -->
-
-									</div>
-								</div>
-							</div>
-							<!-- // Cart item -->
+							
 
 						</div>
 						<!-- // cart-wrapper -->
 
 						<!-- Стоимость заказа -->
-						<div class="cart-total">
-							<p><span class="h5">Доставка:</span> <span class="delivery-cost free">бесплатно</span> </p>
-							<p><span class="h5">Итого:</span> <span class="total-price">13400</span> <span class="rouble">₽</span></p>
+						<div class="cart-total" >
+							<p class="none" data-cart-delivery>
+								<span class="h5">Доставка:</span> 
+								<span class="delivery-cost">500 ₽</span> <br>
+								<span class="small">Бесплатно при заказе от 22222 ₽</span>
+							</p>
+							<p><span class="h5">Итого:</span> <span class="total-price">0</span> <span class="rouble">₽</span></p>
 						</div>
 						<!-- // Стоимость заказа -->
 
 					</div>
 
 					<!-- Оформить заказ -->
-					<div id="order-form" class="card-body border-top">
+					<div id="order-form" class="card-body border-top none">
 						<h5 class="card-title">Оформить заказ</h4>
 						<form>
 							<div class="form-group">
@@ -232,8 +209,11 @@
 
 	<!-- Подключаем скрипты -->
 
-	<script src="./js/counter.js "></script>
-	<script src="./js/cart.js "></script>
+	<!--<script src="./js/renderProducts.js"></script>-->
+	<script src="./js/calcCartPrice.js"></script>
+	<script src="./js/toggleCartStatus.js"></script>
+	<script src="./js/counter.js"></script>
+	<script src="./js/cart.js"></script>
 
 </body>
 
